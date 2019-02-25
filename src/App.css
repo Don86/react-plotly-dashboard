@@ -6,19 +6,20 @@
 }
 
 .container {
-  width: 600px;
+  width: 700px;
   background: pink;
   display: flex;
   flex-direction: row;
 }
 
 .panel {
-  width: 25%;
-  padding: 0px;
+  width: 250px;
+  padding-left: 10px;
   border: 10px solid lightgray;
 }
+
 .chart {
-  width: 200;
+  width: 300px;
   margin-left: 10px auto;
   padding: 0px;
   border: 10px solid lightgray;
@@ -39,4 +40,20 @@
   display: flex;
   justify-content: left;
   align-items: center;
+}
+
+.h3 {
+  font-size: 17px;
+  font-family: 'Bree Serif', cursive;
+}
+
+.input {
+  padding: 8px 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+.input:focus {
+  background-color: lightblue
 }

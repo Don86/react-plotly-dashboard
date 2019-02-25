@@ -3,8 +3,9 @@ import './App.css';
 
 import Plot from 'react-plotly.js';
 import TopBar from "./components/TopBar"
-import Panel0 from "./components/Panel0"
-
+//import PanelTop from "./components/PanelTop"
+import PanelBottom from "./components/PanelBottom"
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 function parseStockData(myInput) {
   /* processes AlphaVantage data into a format for viz by plotly
@@ -27,24 +28,36 @@ function parseStockData(myInput) {
   return newArray
 }
 
+function computeBarData() {
+  console.log("proc computeBarData")
+}
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
+      barInitialValue:0,
+      barAnnualContribution:0,
+      barInterestRate:0,
+      barNumYears:0,
       plotData:{}, 
       plotLayout:{
         width:500, 
-        height:200, 
+        height:400, 
         margin: {
           l: 70,
           r: 20,
-          b: 5,
+          b: 40,
           t: 5,
           pad: 5
         }}
       }
   }
+
+  handleTopPanelChange() {
+    this.setState(return {barInitialValue:})
+  }
+
 
   componentDidMount() {
     const ticker = "VTSAX"
@@ -75,11 +88,27 @@ class App extends Component {
       <div>
       <TopBar />
       <div class="container">
-        <Panel0 className="panel top"/>
+        <div className="panel top">
+          <h3>Initial Value</h3>
+          <input className="input" 
+          type="InitialValue" 
+          name="InitialValue" 
+          onChange={this.handleTopPanelChange}
+          placeholder="0" />
+          <h3>Annual contribution</h3>
+          <input className="input" 
+          type="AnnualContribution" 
+          name="AnnualContribution" 
+          placeholder="0" />
+          <h3>Interest Rate (%)</h3>
+          <input className="input" type="InterestRate" name="InterestRate" placeholder="0" />
+          <h3>No. of years</h3>
+          <input className="input" type="InterestRate" name="InterestRate" placeholder="0" />
+        </div>
         <Plot className="chart bar" data={DummyBarData} layout={this.state.plotLayout}/>
       </div>
       <div class="container">
-        <Panel0 className="panel bottom"/>
+        <PanelBottom className="panel bottom"/>
         <Plot className="chart line" data={DummyData} layout={this.state.plotLayout}/>
       </div>
       </div>
